@@ -26,7 +26,7 @@ sudo docker --version
 
 echo "Nomad Install Beginning..."
 # For now we use a static version. Set to the latest tested version you want here.
-NOMAD_VERSION=0.9.5
+NOMAD_VERSION=1.3.6
 cd /tmp/
 sudo curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
 if [ ! -d nomad ]; then
@@ -46,8 +46,8 @@ sudo cp /vagrant/nomad-config/nomad-server-east.hcl /etc/nomad.d/
 echo "Consul Install Beginning..."
 # Uncommend the first and comment the second line to get the latest edition
 # Otherwise use the static number
-CONSUL_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/consul | jq -r ".current_version")
-#CONSUL_VERSION=1.4.0
+#CONSUL_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/consul | jq -r ".current_version")
+CONSUL_VERSION=1.12.5
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then
   sudo unzip /tmp/consul.zip
